@@ -1,0 +1,13 @@
+version: '3'
+services:
+    db:
+        hostname: db
+        image: postgres:14-alpine
+        environment:
+            - POSTGRES_USER=sqlx-play
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=sqlx-play
+        volumes:
+            - ./pgconfig:/etc/postgresql/
+        ports:
+            - 5432:5432
