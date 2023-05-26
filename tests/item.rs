@@ -1,5 +1,5 @@
 use sqlx::{Acquire, PgPool};
-use sqlx_play::db::model::prelude::*;
+use sqlx_test_example::db::model::prelude::*;
 
 #[sqlx::test(fixtures("item_types"))]
 async fn insert_item_test(pool: PgPool) -> sqlx::Result<()> {
