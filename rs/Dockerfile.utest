@@ -1,0 +1,10 @@
+FROM rust:slim as builder
+COPY rs /usr/src/rs
+WORKDIR /usr/src/rs
+RUN apt update && apt-get install -y libpq-dev librust-openssl-dev 
+RUN cargo update
+RUN cargo install sqlx-cli --no-default-features --features native-tls,postgres
+ARG DATABASE_URL
+ENV DATABASE_URL $DATABASE_URL
+#RUN sqlx migrate run
+#RUN cargo test

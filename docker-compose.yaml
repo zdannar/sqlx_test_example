@@ -11,3 +11,12 @@ services:
             - ./pgconfig:/etc/postgresql/
         ports:
             - 5432:5432
+    sqlx_test_example:
+        image: sqlx_test_example:latest
+        build:
+            context: .
+            dockerfile: rs/Dockerfile.utest
+            args:
+                - DATABASE_URL=postgres://sqlx-play:password@db/sqlx-play
+        links:
+          - "db:db"
