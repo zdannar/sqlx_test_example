@@ -1,0 +1,14 @@
+# Credit to: https://github.com/peter-evans/docker-compose-actions-workflow
+name: Docker Compose Actions Workflow
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build 
+        run: docker-compose build sqlx_test_example
+      - name: Migrate
+        run: docker-compose run sqlx_migrate
+      - name: Test
+        run: docker-compose run sqlx_test
