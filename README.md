@@ -16,3 +16,5 @@ docker-compose run sqlx_migrate
 # Compiles and runs the tests
 docker-compose run sqlx_test
 ```
+
+something exciting
